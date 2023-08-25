@@ -18,15 +18,16 @@
 // Response status can also be optional changed by using $done({body: modifiedBody, headers: modifiedHeaders, status: modifiedStatus}), the modifiedStatus should be like "HTTP/1.1 200 OK"
 
 const nowTime = new Date().getTime()
-const startTime = new Date(new Date().toLocaleDateString()).getTime() + 10 * 60 * 60 * 1000 - 110;
+const startTime = new Date(new Date().toLocaleDateString()).getTime() + 10 * 60 * 60 * 1000 - 60;
 const diff = startTime - nowTime
 
 if (diff > 60000) {
-    $notify("同程抢购未到时间", diff.toString(), JSON.stringify($request.headers));
+    $notify("同程抢购", diff.toString(), "未到时间");
     $done();
 } else {
     setTimeout(function () {
-        $notify("同程抢购开始", diff.toString(), JSON.stringify($request.headers));
+        console.log(startTime)
+        $notify("同程抢购", diff.toString(), "开始");
         $done();
     }, diff)
 }
