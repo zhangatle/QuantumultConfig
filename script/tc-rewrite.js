@@ -18,6 +18,6 @@
 // Response status can also be optional changed by using $done({body: modifiedBody, headers: modifiedHeaders, status: modifiedStatus}), the modifiedStatus should be like "HTTP/1.1 200 OK"
 
 setTimeout(function () {
-    $notify("hello", "你好", "测试");
+    $notify("开始抢购", "你好", "测试");
     $done();
 }, 3000)
