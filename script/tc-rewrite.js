@@ -17,13 +17,16 @@
 // You can optional change the response headers at the same time by using $done({body: modifiedBody, headers: modifiedHeaders}); only change the response headers is not allowed for script-response-body. The modifiedHeaders can be copied and modified from $response.headers, please do not change the content length, type and encoding field.
 // Response status can also be optional changed by using $done({body: modifiedBody, headers: modifiedHeaders, status: modifiedStatus}), the modifiedStatus should be like "HTTP/1.1 200 OK"
 
-// const nowTime = new Date().getTime()
-// const startTime = new Date(new Date().toLocaleDateString()).getTime() + 10 * 60 * 60 * 1000 - 110;
-// const diff = startTime - nowTime
+const nowTime = new Date().getTime()
+const startTime = new Date(new Date().toLocaleDateString()).getTime() + 10 * 60 * 60 * 1000 - 110;
+const diff = startTime - nowTime
 
-const diff = 2000;
-
-setTimeout(function () {
-    $notify("同程抢购", "diff", "开始抢购");
+if (diff > 60000) {
+    $notify("同程抢购未到时间", diff.toString(), JSON.stringify($request.headers));
     $done();
-}, diff)
+} else {
+    setTimeout(function () {
+        $notify("同程抢购开始", diff.toString(), JSON.stringify($request.headers));
+        $done();
+    }, diff)
+}
