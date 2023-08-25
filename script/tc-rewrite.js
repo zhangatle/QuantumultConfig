@@ -26,7 +26,7 @@ if (diff > 60000) {
     $done();
 } else {
     setTimeout(function () {
-        console.log(startTime)
+        console.log($response.body)
         $notify("同程抢购", diff.toString(), "开始");
         $done();
     }, diff)
