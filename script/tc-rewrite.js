@@ -22,12 +22,11 @@ const startTime = new Date(new Date().toLocaleDateString()).getTime() + 10 * 60 
 const diff = startTime - nowTime
 
 if (diff > 60000) {
-    $notify("同程抢购", diff, JSON.stringify($request.headers));
-    $notify("同程抢购", diff, JSON.stringify($request.body));
+    $notify("同程抢购", diff, "未开始");
     $done();
 } else {
     setTimeout(function () {
-        $notify("同程抢购", diff, JSON.stringify($request.body));
+        $notify("同程抢购", diff, "开始抢购");
         $done();
     }, diff)
 }
