@@ -24,6 +24,6 @@
 const diff = 2000;
 
 setTimeout(function () {
-    $notify("同程抢购", diff, "开始抢购");
+    $notify("同程抢购", "diff", "开始抢购");
     $done();
 }, diff)
