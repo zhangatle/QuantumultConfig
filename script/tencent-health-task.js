@@ -1,5 +1,6 @@
 
 let token = $prefs.valueForKey("tencent-token")
+console.log(token)
 
 if(token) {
     const options = {
