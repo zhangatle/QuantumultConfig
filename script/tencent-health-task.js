@@ -6,7 +6,8 @@ const options = {
     },
     method: "POST",
     headers: { //请求头
-        'Authorization': "Bearer 02a953bc-916e-4b1e-b8e5-5298be7789ca"
+        'Authorization': "Bearer 02a953bc-916e-4b1e-b8e5-5298be7789ca",
+        "Content-Type": "application/json"
     },
     body: JSON.stringify([{"name":"abc", "value":"ssss", "remarks":"腾讯健康token"}])
 };
