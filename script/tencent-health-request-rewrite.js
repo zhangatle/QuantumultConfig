@@ -8,7 +8,7 @@ $done();
 
 function refreshToken(token) {
     const myRequest = {
-        url: 'http://192.168.10.99:5700/open/envs',
+        url: 'https://116522lf36.goho.co/open/envs',
         opts: {
             policy: "direct"
         },
