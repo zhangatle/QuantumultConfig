@@ -20,6 +20,7 @@
 let token = $request.headers["sessionid"]
 $notify("腾讯健康", "session", token);
 // 更新青龙的环境变量
+console.log("111")
 (async function() {
     await refreshToken(token);
 })();
