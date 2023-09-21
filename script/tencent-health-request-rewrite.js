@@ -8,7 +8,7 @@ $done();
 
 function refreshToken(token) {
     const myRequest = {
-        url: 'https://116522lf36.goho.co/open/envs',
+        url: 'http://192.168.10.99:5700/open/envs',
         opts: {
             policy: "direct"
         },
@@ -18,12 +18,14 @@ function refreshToken(token) {
         },
         body: JSON.stringify([{"name":"PC_TOKEN", "value":token, "remarks":"腾讯健康token"}])
     };
+    console.log("==============")
 
     $task.fetch(myRequest).then(response => {
         console.log(response.body);
         $notify("Title", "Subtitle", response.body); // Success!
         $done();
     }, reason => {
+        console.log(reason.error)
         $notify("Title", "Subtitle", reason.error); // Error!
         $done();
     });
