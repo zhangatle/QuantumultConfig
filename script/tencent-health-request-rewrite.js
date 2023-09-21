@@ -20,9 +20,7 @@
 let token = $request.headers["sessionid"]
 $notify("腾讯健康", "session", token);
 // 更新青龙的环境变量
-(async function() {
-    await refreshToken(token);
-})();
+refreshToken(token);
 
 $done();
 
@@ -37,20 +35,15 @@ function refreshToken(token) {
             [{"name":"PC_TOKEN", "value":token, "remarks":"test"}]
         )
     }
-    return new Promise((resolve) => {
-        $.post(pointUrl, (error, resp, data) => {
-            console.log("vvvvvvvvvv")
-            try {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(data)
-                }
-            } catch (e) {
-                console.log("error");
-            } finally {
-                resolve();
+    $.post(pointUrl, (error, resp, data) => {
+        try {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(data)
             }
-        })
+        } catch (e) {
+            console.log("error");
+        }
     })
 }
