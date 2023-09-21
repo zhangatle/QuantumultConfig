@@ -26,24 +26,21 @@ $done();
 
 
 function refreshToken(token) {
-    const pointUrl = { //查询积分接口
+    const myRequest = {
         url: 'http://192.168.10.99:5700/open/envs',
+        method: "POST",
         headers: { //请求头
             'Authorization': "Bearer 02a953bc-916e-4b1e-b8e5-5298be7789ca"
         },
-        body: JSON.stringify(
-            [{"name":"PC_TOKEN", "value":token, "remarks":"test"}]
-        )
-    }
-    $post(pointUrl, (error, resp, data) => {
-        try {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(data)
-            }
-        } catch (e) {
-            console.log("error");
-        }
-    })
+        body: JSON.stringify([{"name":"PC_TOKEN", "value":token, "remarks":"腾讯健康token"}])
+    };
+
+    $task.fetch(myRequest).then(response => {
+        console.log(response.body);
+        $notify("Title", "Subtitle", response.body); // Success!
+        $done();
+    }, reason => {
+        $notify("Title", "Subtitle", reason.error); // Error!
+        $done();
+    });
 }
