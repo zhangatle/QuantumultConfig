@@ -21,7 +21,6 @@ let token = $request.headers["sessionid"]
 $notify("腾讯健康", "session", token);
 // 更新青龙的环境变量
 (async function() {
-    console.log("start")
     await refreshToken(token);
 })();
 
@@ -38,16 +37,16 @@ function refreshToken(token) {
             [{"name":"PC_TOKEN", "value":token, "remarks":"test"}]
         )
     }
-    console.log(pointUrl);
     return new Promise((resolve) => {
         $.post(pointUrl, (error, resp, data) => {
+            console.log("vvvvvvvvvv")
             try {
                 if (error) {
                     console.log(error);
                 } else {
                     console.log(data)
                 }
-            } catch (e) { //接住try代码块中抛出的异常, 并打印日志
+            } catch (e) {
                 console.log("error");
             } finally {
                 resolve();
