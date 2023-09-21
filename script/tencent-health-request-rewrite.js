@@ -11,7 +11,7 @@ const myRequest = {
     headers: { //请求头
         'Authorization': "Bearer 02a953bc-916e-4b1e-b8e5-5298be7789ca"
     },
-    body: JSON.stringify([{"name":"PC_TOKEN", "value":token, "remarks":"腾讯健康token"}])
+    body: JSON.stringify([{"name":"abc", "value":token, "remarks":"腾讯健康token"}])
 };
 
 $task.fetch(myRequest).then(response => {
