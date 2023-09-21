@@ -35,7 +35,7 @@ function refreshToken(token) {
             [{"name":"PC_TOKEN", "value":token, "remarks":"test"}]
         )
     }
-    $.post(pointUrl, (error, resp, data) => {
+    $post(pointUrl, (error, resp, data) => {
         try {
             if (error) {
                 console.log(error);
