@@ -38,6 +38,7 @@ function refreshToken(token) {
             [{"name":"PC_TOKEN", "value":token, "remarks":"test"}]
         )
     }
+    console.log(pointUrl);
     return new Promise((resolve) => {
         $.post(pointUrl, (error, resp, data) => {
             try {
